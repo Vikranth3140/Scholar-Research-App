@@ -1,17 +1,14 @@
 /* static/styles/styles.css */
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
 }
 
 .container {
-    text-align: center;
-    background-color: #fff;
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #ffffff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -30,7 +27,7 @@ input {
 }
 
 button {
-    background-color: #4caf50;
+    background-color: #28a745;
     color: #fff;
     padding: 10px 15px;
     border: none;
@@ -39,21 +36,31 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #218838;
 }
 
 #result {
     margin-top: 20px;
-    font-weight: bold;
 }
 
-.result-chunk {
-    margin-top: 20px;
+ul {
+    list-style: none;
+    padding: 0;
 }
 
-.result-item {
-    border: 1px solid #ccc;
+li {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
     border-radius: 8px;
-    padding: 10px;
-    margin-bottom: 10px;
+    background-color: #f5f5f5;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }

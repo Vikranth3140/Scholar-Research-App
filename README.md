@@ -9,6 +9,24 @@ The Scholar H-Index App is a web application that allows users to fetch and disp
 - Results displayed with paper titles from Google Scholar.
 
 
+## File Structure
+
+    Scholar_H_Index_App
+    │
+    ├── static
+    │   └── styles
+    │       └── styles.css
+    │
+    ├── templates
+    │   └── index.html
+    │
+    ├── config.py
+    ├── main.py
+    ├── LICENSE
+    ├── README.md
+    ├── requirements.txt
+
+
 ## How to Use
 
 1. **Installation:**
@@ -44,20 +62,25 @@ The Scholar H-Index App is a web application that allows users to fetch and disp
 
    - The application will display real-time h-index information and the corresponding paper links.
 
+
 ## Requirements
 
 - Python
 - Flask
 - HTML, CSS
 - SerpApi API key
+
+
 ## Note
 
 - Keep your API keys confidential and do not share them publicly.
 - Ensure an active internet connection for accurate data retrieval.
 
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
+
 
 ## Author
 

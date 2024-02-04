@@ -1,3 +1,4 @@
+// static/script.js
 function getHIndex() {
     const scholarName = document.getElementById('scholarName').value;
 

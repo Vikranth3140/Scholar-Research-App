@@ -1,29 +1,35 @@
-from flask import Flask, render_template, request, jsonify
 import requests
 from config import SERPAPI_KEY
 
-app = Flask(__name__)
+def fetch_serpapi_results(query, start=0):
+    api_key = SERPAPI_KEY  # Replace with your actual SerpApi API key
+    base_url = "https://serpapi.com/search.json"
+    params = {
+        "q": query,
+        "hl": "en",
+        "as_sdt": "0,38",
+        "engine": "google_scholar",
+        "start": start,
+        "api_key": api_key,
+    }
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+    response = requests.get(base_url, params=params)
+    return response.json()
 
-@app.route('/getHIndex', methods=['POST'])
-def get_h_index():
-    try:
-        scholar_name = request.json.get('scholarName')
-        api_key = SERPAPI_KEY
-        api_url = 'https://serpapi.com/scholar'
+def main():
+    query = "biology"  # Change the query as needed
+    total_chunks = 3  # Set the total number of chunks
+    current_chunk = 1
 
-        response = requests.get(api_url, params={'q': scholar_name, 'api_key': api_key})
-        data = response.json()
+    while current_chunk <= total_chunks:
+        start_index = (current_chunk - 1) * 10
+        results = fetch_serpapi_results(query, start=start_index)
 
-        h_index = data.get('hindex', 'N/A')
-        return jsonify({'hIndex': h_index})
+        # Process and use the results as needed
+        print(f"Processing results for chunk {current_chunk}/{total_chunks}")
+        print(results)
 
-    except Exception as e:
-        print(f"Error: {e}")
-        return jsonify({'error': 'Internal Server Error'}), 500
+        current_chunk += 1
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    main()

@@ -10,11 +10,16 @@
 <body>
     <div class="container">
         <h1>Scholar H-Index App</h1>
-        <label for="scholarName">Enter Scholar's Name:</label>
-        <input type="text" id="scholarName" placeholder="E.g., John Doe">
-        <button onclick="getHIndex()">Get H-Index</button>
-        <div id="result"></div>
+        <form action="/getHIndex" method="post">
+            <label for="scholarName">Enter Scholar's Name:</label>
+            <input type="text" id="scholarName" name="scholarName" placeholder="E.g., John Doe">
+            <button type="submit">Get H-Index</button>
+        </form>
+        <div id="result">
+            {% if hIndex %}
+                H-Index: {{ hIndex }}
+            {% endif %}
+        </div>
     </div>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

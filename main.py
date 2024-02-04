@@ -5,7 +5,7 @@ from config import SERPAPI_KEY
 app = Flask(__name__)
 
 def fetch_serpapi_results(query, start=0):
-    api_key = SERPAPI_KEY  # Replace with your actual SerpApi API key
+    api_key = SERPAPI_KEY
     base_url = "https://serpapi.com/search.json"
     params = {
         "q": query,
@@ -21,24 +21,20 @@ def fetch_serpapi_results(query, start=0):
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    h_index = None
+    paper_details = []
 
     if request.method == 'POST':
         query = request.form['scholarName']
         total_chunks = 3
         current_chunk = 1
 
-        results = []
-
         while current_chunk <= total_chunks:
             start_index = (current_chunk - 1) * 10
             api_results = fetch_serpapi_results(query, start=start_index)
-            results.extend(api_results["organic_results"])
+            paper_details.extend(api_results["organic_results"])
             current_chunk += 1
 
-        h_index = [result['title'] for result in results]
-
-    return render_template('index.html', h_index=h_index)
+    return render_template('index.html', paper_details=paper_details)
 
 if __name__ == "__main__":
     app.run(debug=True)

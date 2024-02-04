@@ -15,17 +15,28 @@
             <button type="submit">Get H-Index</button>
         </form>
         <div id="result">
-            {% if h_index %}
+            {% if paper_details %}
                 <h2>Results:</h2>
                 <ul>
-                    {% for result in h_index %}
-                        <li>{{ result }}</li>
+                    {% for paper in paper_details %}
+                        <li>
+                            <p>Title: {{ paper['title'] }}</p>
+                            <p>URL: <a href="{{ paper['link'] }}" target="_blank">{{ paper['link'] }}</a></p>
+                            <p>Snippet: {{ paper['snippet'] }}</p>
+                            {% if 'cited_by' in paper['inline_links'] %}
+                                <p>Cited by: {{ paper['inline_links']['cited_by']['total'] }}</p>
+                                <p>Cited by link: <a href="{{ paper['inline_links']['cited_by']['link'] }}" target="_blank">{{ paper['inline_links']['cited_by']['link'] }}</a></p>
+                            {% endif %}
+                            {% if 'related_pages_link' in paper %}
+                                <p>Related Pages: <a href="{{ paper['related_pages_link'] }}" target="_blank">{{ paper['related_pages_link'] }}</a></p>
+                            {% endif %}
+                        </li>
                     {% endfor %}
                 </ul>
             {% else %}
                 <p>No results found.</p>
             {% endif %}
-        </div>
+        </div>        
     </div>
 </body>
 </html>

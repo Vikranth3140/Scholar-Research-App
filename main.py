@@ -17,7 +17,7 @@ def fetch_serpapi_results(query, start=0):
     return response.json()
 
 def main():
-    query = "biology"  # Change the query as needed
+    query = input("Enter the query: ")  # Prompt the user to enter the query
     total_chunks = 3  # Set the total number of chunks
     current_chunk = 1
 
@@ -27,7 +27,14 @@ def main():
 
         # Process and use the results as needed
         print(f"Processing results for chunk {current_chunk}/{total_chunks}")
-        print(results)
+        print("Results:")
+        for index, result in enumerate(results["organic_results"], start=1):
+            print(f"Result {index}:")
+            print(f"Title: {result['title']}")
+            print(f"URL: {result['link']}")
+            print(f"Snippet: {result['snippet']}")
+            print()
+
 
         current_chunk += 1
 

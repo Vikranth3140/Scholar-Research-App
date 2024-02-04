@@ -1,5 +1,8 @@
+from flask import Flask, render_template, request
 import requests
 from config import SERPAPI_KEY
+
+app = Flask(__name__)
 
 def fetch_serpapi_results(query, start=0):
     api_key = SERPAPI_KEY  # Replace with your actual SerpApi API key
@@ -16,27 +19,26 @@ def fetch_serpapi_results(query, start=0):
     response = requests.get(base_url, params=params)
     return response.json()
 
-def main():
-    query = input("Enter the query: ")  # Prompt the user to enter the query
-    total_chunks = 3  # Set the total number of chunks
-    current_chunk = 1
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    h_index = None
 
-    while current_chunk <= total_chunks:
-        start_index = (current_chunk - 1) * 10
-        results = fetch_serpapi_results(query, start=start_index)
+    if request.method == 'POST':
+        query = request.form['scholarName']
+        total_chunks = 3
+        current_chunk = 1
 
-        # Process and use the results as needed
-        print(f"Processing results for chunk {current_chunk}/{total_chunks}")
-        print("Results:")
-        for index, result in enumerate(results["organic_results"], start=1):
-            print(f"Result {index}:")
-            print(f"Title: {result['title']}")
-            print(f"URL: {result['link']}")
-            print(f"Snippet: {result['snippet']}")
-            print()
+        results = []
 
+        while current_chunk <= total_chunks:
+            start_index = (current_chunk - 1) * 10
+            api_results = fetch_serpapi_results(query, start=start_index)
+            results.extend(api_results["organic_results"])
+            current_chunk += 1
 
-        current_chunk += 1
+        h_index = [result['title'] for result in results]
+
+    return render_template('index.html', h_index=h_index)
 
 if __name__ == "__main__":
-    main()
+    app.run(debug=True)

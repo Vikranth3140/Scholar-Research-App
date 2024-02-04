@@ -18,6 +18,24 @@
         <div id="result">
             {% if hIndex %}
                 H-Index: {{ hIndex }}
+            {% else %}
+                No results found.
+            {% endif %}
+        
+            {% if searchResults %}
+                <h2>Search Results:</h2>
+                {% for chunk, results in searchResults.items() %}
+                    <div class="result-chunk">
+                        <h3>Results for chunk {{ chunk }}/{{ totalChunks }}</h3>
+                        {% for result in results %}
+                            <div class="result-item">
+                                <p>Title: {{ result.title }}</p>
+                                <p>URL: <a href="{{ result.link }}" target="_blank">{{ result.link }}</a></p>
+                                <p>Snippet: {{ result.snippet }}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
             {% endif %}
         </div>
     </div>

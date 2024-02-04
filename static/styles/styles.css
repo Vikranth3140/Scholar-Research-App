@@ -46,3 +46,14 @@ button:hover {
     margin-top: 20px;
     font-weight: bold;
 }
+
+.result-chunk {
+    margin-top: 20px;
+}
+
+.result-item {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+}

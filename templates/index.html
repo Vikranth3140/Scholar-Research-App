@@ -77,29 +77,25 @@
         <h1 class="mb-4">Scholar H-Index App</h1>
         <form action="/" method="post">
             <label for="scholarName">Enter Scholar's Name:</label>
-            <input type="text" id="scholarName" name="scholarName" placeholder="E.g., John Doe" class="form-control mb-3">
-            <button type="submit" class="btn btn-success">Get H-Index</button>
+            <input type="text" id="scholarName" name="scholar_name" placeholder="E.g., John Doe" class="form-control mb-3">
+            <button type="submit" class="btn btn-success">Get Profile Information</button>
         </form>
         <div id="result">
-            {% if paper_details %}
-                <h2 class="mt-4">Results:</h2>
+            {% if profile_info %}
+                <h2 class="mt-4">Profile Information:</h2>
                 <ul>
-                    {% for paper in paper_details %}
+                    {% for profile in profile_info %}
                         <li>
-                            <h4>{{ paper['title'] }}</h4>
-                            <p><strong>URL:</strong> <a href="{{ paper['link'] }}" target="_blank">{{ paper['link'] }}</a></p>
-                            <p>{{ paper['snippet'] }}</p>
-                            {% if 'cited_by' in paper['inline_links'] %}
-                                <p><strong>Cited by:</strong> {{ paper['inline_links']['cited_by']['total'] }} | <a href="{{ paper['inline_links']['cited_by']['link'] }}" target="_blank">Cited by link</a></p>
-                            {% endif %}
-                            {% if 'related_pages_link' in paper %}
-                                <p><strong>Related Pages:</strong> <a href="{{ paper['related_pages_link'] }}" target="_blank">{{ paper['related_pages_link'] }}</a></p>
-                            {% endif %}
+                            <h4>{{ profile.get('name', '') }}</h4>
+                            <p><strong>URL:</strong> <a href="{{ profile.get('link', '') }}" target="_blank">{{ profile.get('link', '') }}</a></p>
+                            <p>{{ profile.get('affiliations', '') }}</p>
+                            <p>Cited by: {{ profile.get('cited_by', 0) }}</p>
+                            <!-- Add other profile information as needed -->
                         </li>
                     {% endfor %}
                 </ul>
             {% else %}
-                <p class="mt-4">No results found.</p>
+                <p class="mt-4">No profile information found.</p>
             {% endif %}
         </div>
     </div>

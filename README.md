@@ -55,7 +55,7 @@ The Scholar H-Index App is a web application that allows users to fetch and disp
 
    - Enter the desired scholor's name.
 
-4. **View Insights:**
+4. **View Results:**
    - Open the app in your web browser.
 
         [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
@@ -63,12 +63,11 @@ The Scholar H-Index App is a web application that allows users to fetch and disp
    - The application will display real-time h-index information and the corresponding paper links.
 
 
-## Requirements
+## Tech Stack
 
 - Python
 - Flask
 - HTML, CSS
-- SerpApi API key
 
 
 ## Note

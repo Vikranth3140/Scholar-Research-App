@@ -65,9 +65,9 @@ The Scholar H-Index App is a web application that allows users to fetch and disp
 
 ## Tech Stack
 
-- Python
-- Flask
 - HTML, CSS
+- Flask (Python)
+- SerpApi
 
 
 ## Note

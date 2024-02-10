@@ -19,9 +19,23 @@ def fetch_serpapi_results(query, start=0):
     response = requests.get(base_url, params=params)
     return response.json()
 
+def calculate_h_index(papers):
+    citations = [paper.get("cited_by_count", 0) for paper in papers]
+    citations.sort(reverse=True)
+    h_index = 0
+
+    for i, citation in enumerate(citations):
+        if citation >= i + 1:
+            h_index = i + 1
+        else:
+            break
+
+    return h_index
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     paper_details = []
+    h_index = 0
 
     if request.method == 'POST':
         query = request.form['scholarName']
@@ -34,7 +48,9 @@ def index():
             paper_details.extend(api_results["organic_results"])
             current_chunk += 1
 
-    return render_template('index.html', paper_details=paper_details)
+        h_index = calculate_h_index(paper_details)
+
+    return render_template('index.html', paper_details=paper_details, h_index=h_index)
 
 if __name__ == "__main__":
     app.run(debug=True)

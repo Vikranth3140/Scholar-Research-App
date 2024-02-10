@@ -1,11 +1,11 @@
-# Scholar H-Index App
+# Scholar Research App
 
-The Scholar H-Index App is a web application that allows users to fetch and display Google Scholar <a href="https://en.wikipedia.org/wiki/H-index">H-Index</a> information for a given scholar's name. The app utilizes the <a href="https://serpapi.com/">SerpApi</a> to retrieve search results from <a href="https://scholar.google.com/">Google Scholar</a>.
+The Scholar Research App is a web application that allows users to fetch and display Google Scholar papers for a given scholar's name. The app utilizes the <a href="https://serpapi.com/">SerpApi</a> to retrieve search results from <a href="https://scholar.google.com/">Google Scholar</a>.
 
 
 ## Features
 
-- Enter the scholar's name and get the H-Index information.
+- Enter the scholar's name and get their research papers list.
 - Results displayed with paper titles from Google Scholar.
 
 
@@ -40,7 +40,7 @@ The Scholar H-Index App is a web application that allows users to fetch and disp
    - Clone the repository.
 
     ```bash
-    git clone https://github.com/Vikranth3140/H-Index-Finder.git
+    git clone https://github.com/Vikranth3140/Scholar-Research-App.git
     ```
 
    - Install required dependencies
@@ -67,7 +67,7 @@ The Scholar H-Index App is a web application that allows users to fetch and disp
 
         [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
 
-   - The application will display real-time h-index information and the corresponding paper links.
+   - The application will display real-time research paper information and the corresponding paper links.
 
 ## Note
 

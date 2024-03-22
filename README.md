@@ -2,6 +2,8 @@
 
 The Scholar Research App is a web application that allows users to fetch and display Google Scholar papers for a given scholar's name. The app utilizes the <a href="https://serpapi.com/">SerpApi</a> to retrieve search results from <a href="https://scholar.google.com/">Google Scholar</a>.
 
+Check it out at <a href="https://vikranth3140.pythonanywhere.com/">vikranth3140.pythonanywhere.com</a>
+
 
 ## Features
 

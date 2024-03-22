@@ -51,6 +51,3 @@ def index():
         h_index = calculate_h_index(paper_details)
 
     return render_template('index.html', paper_details=paper_details, h_index=h_index)
-
-if __name__ == "__main__":
-    app.run(debug=True)
